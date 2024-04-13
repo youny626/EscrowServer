@@ -19,7 +19,7 @@ public protocol RunClientProtocol: GRPCClient {
   func runFunction(
     _ request: FunctionParams,
     callOptions: CallOptions?
-  ) -> UnaryCall<FunctionParams, Empty>
+  ) -> UnaryCall<FunctionParams, Result>
 }
 
 extension RunClientProtocol {
@@ -36,7 +36,7 @@ extension RunClientProtocol {
   public func runFunction(
     _ request: FunctionParams,
     callOptions: CallOptions? = nil
-  ) -> UnaryCall<FunctionParams, Empty> {
+  ) -> UnaryCall<FunctionParams, Result> {
     return self.makeUnaryCall(
       path: RunClientMetadata.Methods.runFunction.path,
       request: request,
@@ -111,7 +111,7 @@ public protocol RunAsyncClientProtocol: GRPCClient {
   func makeRunFunctionCall(
     _ request: FunctionParams,
     callOptions: CallOptions?
-  ) -> GRPCAsyncUnaryCall<FunctionParams, Empty>
+  ) -> GRPCAsyncUnaryCall<FunctionParams, Result>
 }
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -127,7 +127,7 @@ extension RunAsyncClientProtocol {
   public func makeRunFunctionCall(
     _ request: FunctionParams,
     callOptions: CallOptions? = nil
-  ) -> GRPCAsyncUnaryCall<FunctionParams, Empty> {
+  ) -> GRPCAsyncUnaryCall<FunctionParams, Result> {
     return self.makeAsyncUnaryCall(
       path: RunClientMetadata.Methods.runFunction.path,
       request: request,
@@ -142,7 +142,7 @@ extension RunAsyncClientProtocol {
   public func runFunction(
     _ request: FunctionParams,
     callOptions: CallOptions? = nil
-  ) async throws -> Empty {
+  ) async throws -> Result {
     return try await self.performAsyncUnaryCall(
       path: RunClientMetadata.Methods.runFunction.path,
       request: request,
@@ -172,7 +172,7 @@ public struct RunAsyncClient: RunAsyncClientProtocol {
 public protocol RunClientInterceptorFactoryProtocol: Sendable {
 
   /// - Returns: Interceptors to use when invoking 'runFunction'.
-  func makeRunFunctionInterceptors() -> [ClientInterceptor<FunctionParams, Empty>]
+  func makeRunFunctionInterceptors() -> [ClientInterceptor<FunctionParams, Result>]
 }
 
 public enum RunClientMetadata {
@@ -197,7 +197,7 @@ public enum RunClientMetadata {
 public protocol RunProvider: CallHandlerProvider {
   var interceptors: RunServerInterceptorFactoryProtocol? { get }
 
-  func runFunction(request: FunctionParams, context: StatusOnlyCallContext) -> EventLoopFuture<Empty>
+  func runFunction(request: FunctionParams, context: StatusOnlyCallContext) -> EventLoopFuture<Result>
 }
 
 extension RunProvider {
@@ -216,7 +216,7 @@ extension RunProvider {
       return UnaryServerHandler(
         context: context,
         requestDeserializer: ProtobufDeserializer<FunctionParams>(),
-        responseSerializer: ProtobufSerializer<Empty>(),
+        responseSerializer: ProtobufSerializer<Result>(),
         interceptors: self.interceptors?.makeRunFunctionInterceptors() ?? [],
         userFunction: self.runFunction(request:context:)
       )
@@ -236,7 +236,7 @@ public protocol RunAsyncProvider: CallHandlerProvider, Sendable {
   func runFunction(
     request: FunctionParams,
     context: GRPCAsyncServerCallContext
-  ) async throws -> Empty
+  ) async throws -> Result
 }
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -262,7 +262,7 @@ extension RunAsyncProvider {
       return GRPCAsyncServerHandler(
         context: context,
         requestDeserializer: ProtobufDeserializer<FunctionParams>(),
-        responseSerializer: ProtobufSerializer<Empty>(),
+        responseSerializer: ProtobufSerializer<Result>(),
         interceptors: self.interceptors?.makeRunFunctionInterceptors() ?? [],
         wrapping: { try await self.runFunction(request: $0, context: $1) }
       )
@@ -277,7 +277,7 @@ public protocol RunServerInterceptorFactoryProtocol: Sendable {
 
   /// - Returns: Interceptors to use when handling 'runFunction'.
   ///   Defaults to calling `self.makeInterceptors()`.
-  func makeRunFunctionInterceptors() -> [ServerInterceptor<FunctionParams, Empty>]
+  func makeRunFunctionInterceptors() -> [ServerInterceptor<FunctionParams, Result>]
 }
 
 public enum RunServerMetadata {

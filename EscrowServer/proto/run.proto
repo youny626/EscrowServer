@@ -1,14 +1,16 @@
 syntax = "proto3";
 
 service Run {
-    rpc RunFunction(FunctionParams) returns (Empty);
+    rpc RunFunction(FunctionParams) returns (Result);
 }
 
 message FunctionParams {
-    bool success = 1;
-    bytes data = 2;
+    string name = 1;
+    bool success = 2;
+    bytes data = 3;
 }
 
-message Empty {
-    
+message Result {
+    bool success = 1;
+    bytes result = 2;
 }
