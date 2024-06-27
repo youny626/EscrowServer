@@ -87,7 +87,7 @@ func runServer(useTLS: Bool) async throws {
     // Start the server and print its address once it has started.
     let server = try await builder
         .withServiceProviders([provider])
-        .bind(host: "127.0.0.1", port: 1234)
+        .bind(host: "172.16.105.10", port: 1234)
         .get()
     
     print("server started on host \(server.channel.localAddress!.ipAddress!) port \(server.channel.localAddress!.port!)")

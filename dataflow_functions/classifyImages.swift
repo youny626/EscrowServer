@@ -13,7 +13,7 @@ func classifyImages(_ success: Bool, _ df: DataFrame?) -> Data? {
             images = df["asset"].map{
                 $0 as! NSImage
             }
-//            print(images.count)
+            print("Number of images: \(images.count)")
 //            print(images.first!.isValid)
 //            print(images.first!.size)
             let imagePredictor = ImagePredictor()
