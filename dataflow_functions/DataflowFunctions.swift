@@ -22,10 +22,12 @@ func testPhotoRemote(_ success: Bool, _ df: DataFrame?) -> Data? {
     if success {
         if let df = df {
             print(df)
-            images = df["asset"].map{ 
+            images = df["asset"].map{
                 $0 as! NSImage
             }
             print(images.count)
+            print(images.first!.isValid)
+            print(images.first!.size)
         }
     }
     else {

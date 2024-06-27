@@ -47,8 +47,8 @@ class EscrowManager {
                     var new_df = df
                     new_df.transformColumn("asset") {
                         (ele: String) -> NSImage? in
-                        let data = Data(String(describing: ele).utf8)
-                        return NSImage(data: data)
+                        let data = Data(base64Encoded: ele)
+                        return NSImage(data: data!)
                     }
                     return function(success, new_df)
                 }
