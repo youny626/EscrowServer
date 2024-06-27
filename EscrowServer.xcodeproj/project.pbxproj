@@ -10,6 +10,7 @@
 		43291B0D2C2D3E60001F1E83 /* GRPCSwiftCertificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43291B0C2C2D3E60001F1E83 /* GRPCSwiftCertificate.swift */; };
 		43291B122C2D4B6F001F1E83 /* MobileNetV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 43291B112C2D4B6F001F1E83 /* MobileNetV2.mlmodel */; };
 		43291B152C2D4BBB001F1E83 /* ImagePredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43291B132C2D4BBB001F1E83 /* ImagePredictor.swift */; };
+		43291B172C2E08FF001F1E83 /* classifyImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43291B162C2E08FF001F1E83 /* classifyImages.swift */; };
 		43DCE1832BBBBB380047F75C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DCE1822BBBBB380047F75C /* main.swift */; };
 		43DCE18B2BBBBB7E0047F75C /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 43DCE18A2BBBBB7E0047F75C /* GRPC */; };
 		43DCE1942BBBBBE80047F75C /* EscrowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DCE1932BBBBBE80047F75C /* EscrowManager.swift */; };
@@ -35,6 +36,7 @@
 		43291B0C2C2D3E60001F1E83 /* GRPCSwiftCertificate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRPCSwiftCertificate.swift; sourceTree = "<group>"; };
 		43291B112C2D4B6F001F1E83 /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2.mlmodel; sourceTree = "<group>"; };
 		43291B132C2D4BBB001F1E83 /* ImagePredictor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePredictor.swift; sourceTree = "<group>"; };
+		43291B162C2E08FF001F1E83 /* classifyImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classifyImages.swift; sourceTree = "<group>"; };
 		43DCE17F2BBBBB380047F75C /* EscrowServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EscrowServer; sourceTree = BUILT_PRODUCTS_DIR; };
 		43DCE1822BBBBB380047F75C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		43DCE1932BBBBBE80047F75C /* EscrowManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EscrowManager.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				43DCE19C2BC9C4AC0047F75C /* DataflowFunctions.swift */,
+				43291B162C2E08FF001F1E83 /* classifyImages.swift */,
 			);
 			path = dataflow_functions;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				43291B0D2C2D3E60001F1E83 /* GRPCSwiftCertificate.swift in Sources */,
 				43DCE1942BBBBBE80047F75C /* EscrowManager.swift in Sources */,
 				43DCE1832BBBBB380047F75C /* main.swift in Sources */,
+				43291B172C2E08FF001F1E83 /* classifyImages.swift in Sources */,
 				43291B152C2D4BBB001F1E83 /* ImagePredictor.swift in Sources */,
 				43DCE1AB2BCA2F010047F75C /* run.grpc.swift in Sources */,
 			);

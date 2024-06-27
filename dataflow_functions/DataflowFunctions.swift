@@ -13,7 +13,11 @@ struct DataflowFunction {
 }
 
 // pre-specified by developers
-var DataflowFunctions: [DataflowFunction] = [DataflowFunction(function: testPhotoRemote, name: "testPhotoRemote")]
+var DataflowFunctions: [DataflowFunction] = 
+[
+    DataflowFunction(function: testPhotoRemote, name: "testPhotoRemote"),
+    DataflowFunction(function: classifyImages, name: "classifyImages")
+]
 
 func testPhotoRemote(_ success: Bool, _ df: DataFrame?) -> Data? {
     
