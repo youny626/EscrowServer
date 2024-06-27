@@ -5,7 +5,7 @@ import NIOPosix
 
 import Foundation
 
-typealias DataflowFunctionType = (_ success: Bool, _ df: DataFrame?) -> Data
+typealias DataflowFunctionType = (_ success: Bool, _ df: DataFrame?) -> Data?
 
 final class MyRunProvider: RunAsyncProvider {
     
@@ -30,7 +30,7 @@ final class MyRunProvider: RunAsyncProvider {
         let success = request.success
         let data = request.data
         
-        let df = try? DataFrame(csvData: data)
+        let df = try? DataFrame(jsonData: data)
         
         // FIXME: calling function by its string name is not possible (the function needs to be marked as @objc but it can't)
         
@@ -42,11 +42,11 @@ final class MyRunProvider: RunAsyncProvider {
         
 //        test(success, df)
 
-        let resData = DataflowFunction.runFunction(funcName, success, df)
+        let resData = EscrowManager.runFunction(funcName, success, df)
         
         let result: Result = .with {
             $0.success = true
-            $0.result = resData
+            $0.result = resData!
         }
         
         return result
@@ -68,7 +68,7 @@ func runServer() async throws {
     // Start the server and print its address once it has started.
     let server = try await Server.insecure(group: group)
         .withServiceProviders([provider])
-        .bind(host: "localhost", port: 1234)
+        .bind(host: "127.0.0.1", port: 1234)
         .get()
     
     print("server started on port \(server.channel.localAddress!.port!)")

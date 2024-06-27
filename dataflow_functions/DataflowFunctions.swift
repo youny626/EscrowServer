@@ -1,28 +1,45 @@
 import Foundation
 import TabularData
+import AppKit
 
-@propertyWrapper
-struct DataflowFunctionWrapper {
-    var wrappedValue: DataflowFunctionType
+struct DataflowFunction {
+    var function: DataflowFunctionType
     var name: String
     
-    init(wrappedValue: @escaping DataflowFunctionType, name: String) {
-        self.wrappedValue = wrappedValue
+    init(function: @escaping DataflowFunctionType, name: String) {
+        self.function = function
         self.name = name
     }
 }
 
-struct DataflowFunctions {
-    
-    // Developer needs to wrap their function in DataflowFunctionWrapper
+// pre-specified by developers
+var DataflowFunctions: [DataflowFunction] = [DataflowFunction(function: testPhotoRemote, name: "testPhotoRemote")]
 
-    @DataflowFunctionWrapper(wrappedValue: test, name: "test") var x
-    @DataflowFunctionWrapper(wrappedValue: test2, name: "test2") var y
+func testPhotoRemote(_ success: Bool, _ df: DataFrame?) -> Data? {
+    
+    var images : Array<NSImage> = Array<NSImage>()
+    
+    if success {
+        if let df = df {
+            print(df)
+            images = df["asset"].map{ 
+                $0 as! NSImage
+            }
+            print(images.count)
+        }
+    }
+    else {
+        print("error")
+    }
+    
+//    return nil
+    return Data("testPhotoRemote".utf8)
 }
 
 func test(_ success: Bool, _ df: DataFrame?) -> Data {
     if success {
         if let df = df {
+            print("test")
             print("\(df)")
 //            var data = try! df.csvRepresentation()
 //            var new_df = try! DataFrame(csvData: data)

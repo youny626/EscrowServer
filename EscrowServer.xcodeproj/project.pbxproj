@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		43DCE1832BBBBB380047F75C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DCE1822BBBBB380047F75C /* main.swift */; };
 		43DCE18B2BBBBB7E0047F75C /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 43DCE18A2BBBBB7E0047F75C /* GRPC */; };
-		43DCE1942BBBBBE80047F75C /* DataflowFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DCE1932BBBBBE80047F75C /* DataflowFunction.swift */; };
-		43DCE19E2BC9C53F0047F75C /* wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DCE19C2BC9C4AC0047F75C /* wrapper.swift */; };
+		43DCE1942BBBBBE80047F75C /* EscrowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DCE1932BBBBBE80047F75C /* EscrowManager.swift */; };
+		43DCE19E2BC9C53F0047F75C /* DataflowFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DCE19C2BC9C4AC0047F75C /* DataflowFunctions.swift */; };
 		43DCE1AA2BCA2F010047F75C /* run.proto in Sources */ = {isa = PBXBuildFile; fileRef = 43DCE1A72BCA2F010047F75C /* run.proto */; };
 		43DCE1AB2BCA2F010047F75C /* run.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DCE1A82BCA2F010047F75C /* run.grpc.swift */; };
 		43DCE1AC2BCA2F010047F75C /* run.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DCE1A92BCA2F010047F75C /* run.pb.swift */; };
@@ -31,8 +31,8 @@
 /* Begin PBXFileReference section */
 		43DCE17F2BBBBB380047F75C /* EscrowServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EscrowServer; sourceTree = BUILT_PRODUCTS_DIR; };
 		43DCE1822BBBBB380047F75C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		43DCE1932BBBBBE80047F75C /* DataflowFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataflowFunction.swift; sourceTree = "<group>"; };
-		43DCE19C2BC9C4AC0047F75C /* wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wrapper.swift; sourceTree = "<group>"; };
+		43DCE1932BBBBBE80047F75C /* EscrowManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EscrowManager.swift; sourceTree = "<group>"; };
+		43DCE19C2BC9C4AC0047F75C /* DataflowFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataflowFunctions.swift; sourceTree = "<group>"; };
 		43DCE1A72BCA2F010047F75C /* run.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = run.proto; sourceTree = "<group>"; };
 		43DCE1A82BCA2F010047F75C /* run.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = run.grpc.swift; sourceTree = "<group>"; };
 		43DCE1A92BCA2F010047F75C /* run.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = run.pb.swift; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 		43DCE1812BBBBB380047F75C /* EscrowServer */ = {
 			isa = PBXGroup;
 			children = (
-				43DCE1932BBBBBE80047F75C /* DataflowFunction.swift */,
+				43DCE1932BBBBBE80047F75C /* EscrowManager.swift */,
 				43DCE18C2BBBBBB70047F75C /* proto */,
 				43DCE1822BBBBB380047F75C /* main.swift */,
 			);
@@ -90,7 +90,7 @@
 		43DCE19D2BC9C4AC0047F75C /* dataflow_functions */ = {
 			isa = PBXGroup;
 			children = (
-				43DCE19C2BC9C4AC0047F75C /* wrapper.swift */,
+				43DCE19C2BC9C4AC0047F75C /* DataflowFunctions.swift */,
 			);
 			path = dataflow_functions;
 			sourceTree = "<group>";
@@ -161,8 +161,8 @@
 			files = (
 				43DCE1AC2BCA2F010047F75C /* run.pb.swift in Sources */,
 				43DCE1AA2BCA2F010047F75C /* run.proto in Sources */,
-				43DCE19E2BC9C53F0047F75C /* wrapper.swift in Sources */,
-				43DCE1942BBBBBE80047F75C /* DataflowFunction.swift in Sources */,
+				43DCE19E2BC9C53F0047F75C /* DataflowFunctions.swift in Sources */,
+				43DCE1942BBBBBE80047F75C /* EscrowManager.swift in Sources */,
 				43DCE1832BBBBB380047F75C /* main.swift in Sources */,
 				43DCE1AB2BCA2F010047F75C /* run.grpc.swift in Sources */,
 			);
