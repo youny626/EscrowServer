@@ -37,6 +37,7 @@ class EscrowManager {
         
         if let function = shared.funcNameDict[funcName] {
             if let df = df {
+                // TODO: need some other param in the request to indicate the asset col needs to be transformed
                 if df.containsColumn("asset", String.self) {
     //                let image_arr = df["asset"].map {
     //                    ele in
