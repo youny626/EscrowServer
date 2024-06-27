@@ -64,18 +64,18 @@
 			path = models;
 			sourceTree = "<group>";
 		};
-		43291B142C2D4BBB001F1E83 /* Image Predictor */ = {
+		43291B142C2D4BBB001F1E83 /* ImagePredictor */ = {
 			isa = PBXGroup;
 			children = (
 				43291B132C2D4BBB001F1E83 /* ImagePredictor.swift */,
 			);
-			path = "Image Predictor";
+			path = ImagePredictor;
 			sourceTree = "<group>";
 		};
 		43DCE1762BBBBB380047F75C = {
 			isa = PBXGroup;
 			children = (
-				43291B142C2D4BBB001F1E83 /* Image Predictor */,
+				43291B142C2D4BBB001F1E83 /* ImagePredictor */,
 				43291B102C2D4B5E001F1E83 /* models */,
 				43291B0C2C2D3E60001F1E83 /* GRPCSwiftCertificate.swift */,
 				43DCE19D2BC9C4AC0047F75C /* dataflow_functions */,
