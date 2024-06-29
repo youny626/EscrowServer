@@ -68,6 +68,10 @@ func runServer(useTLS: Bool) async throws {
     
     let provider = MyRunProvider()
     
+    let keepalive = ServerConnectionKeepalive(
+      timeout: .seconds(60)
+    )
+    
     if useTLS {
         let caCert = SampleCertificate.ca
         let serverCert = SampleCertificate.server
@@ -78,14 +82,16 @@ func runServer(useTLS: Bool) async throws {
             privateKey: SamplePrivateKey.server
         )
         .withTLS(trustRoots: .certificates([caCert.certificate]))
+        .withKeepalive(keepalive)
         print("starting secure server")
     } else {
-        builder = Server.insecure(group: group)
+        builder = Server.insecure(group: group).withKeepalive(keepalive)
         print("starting insecure server")
     }
     
     // Start the server and print its address once it has started.
     let server = try await builder
+        .withMaximumReceiveMessageLength(200 * 1024 * 1024) //200 mb
         .withServiceProviders([provider])
         .bind(host: "172.16.105.10", port: 1234)
         .get()

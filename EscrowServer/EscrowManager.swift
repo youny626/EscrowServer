@@ -48,7 +48,11 @@ class EscrowManager {
                     new_df.transformColumn("asset") {
                         (ele: String) -> NSImage? in
                         let data = Data(base64Encoded: ele)
+//                        let cgimage = CGImage(pngDataProviderSource: CGDataProvider(data: data! as CFData)!, decode: nil, shouldInterpolate: false, intent: .defaultIntent)
+//                        let cgimageSource = CGImageSourceCreateWithData(data! as CFData, nil)
+//                        let cgimage = CGImageSourceCreateImageAtIndex(cgimageSource!, 0, nil)
                         return NSImage(data: data!)
+//                        return NSImage(cgImage: cgimage!, size: .zero)
                     }
                     return function(success, new_df)
                 }

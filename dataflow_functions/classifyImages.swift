@@ -14,7 +14,9 @@ func classifyImages(_ success: Bool, _ df: DataFrame?) -> Data? {
                 $0 as! NSImage
             }
             print("Number of images: \(images.count)")
-//            print(images.first!.isValid)
+            if !images.first!.isValid {
+                fatalError("Image is not valid")
+            }
 //            print(images.first!.size)
             let imagePredictor = ImagePredictor()
             
@@ -37,7 +39,7 @@ func classifyImages(_ success: Bool, _ df: DataFrame?) -> Data? {
     }
     
 //    return nil
-    print(predictionResults)
+//    print(predictionResults)
     return Data(predictionResults.utf8)
 }
 
