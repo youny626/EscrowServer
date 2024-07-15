@@ -28,6 +28,7 @@ final class MyRunProvider: RunAsyncProvider {
     
     
     func runFunction(request: FunctionParams, context: GRPC.GRPCAsyncServerCallContext) async throws -> Result {
+        
         let success = request.success
         let data = request.data
         
@@ -43,7 +44,20 @@ final class MyRunProvider: RunAsyncProvider {
         
         //        test(success, df)
         
+        let startTime = CFAbsoluteTimeGetCurrent()
+
         let resData = EscrowManager.runFunction(funcName, success, df)
+        
+        let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
+        print("Time elapsed for running dataflowFunction in server: \(timeElapsed) s.")
+        let filename_remote = getDocumentsDirectory().appendingPathComponent("classify_images_run_function_remote_1.txt")
+//        do {
+//            try FileManager.default.removeItem(at: filename_remote)
+//        } catch let error as NSError {
+//            print("Error: \(error.domain)")
+//        }
+        let resToWrite = "\(timeElapsed)\n"
+        log(filename_remote, resToWrite)
         
         let result: Result = .with {
             $0.success = true
@@ -69,7 +83,7 @@ func runServer(useTLS: Bool) async throws {
     let provider = MyRunProvider()
     
     let keepalive = ServerConnectionKeepalive(
-      timeout: .seconds(60)
+      timeout: .seconds(100)
     )
     
     if useTLS {
@@ -93,7 +107,7 @@ func runServer(useTLS: Bool) async throws {
     let server = try await builder
         .withMaximumReceiveMessageLength(200 * 1024 * 1024) //200 mb
         .withServiceProviders([provider])
-        .bind(host: "172.16.105.10", port: 1234)
+        .bind(host: "172.16.105.11", port: 1234)
         .get()
     
     print("server started on host \(server.channel.localAddress!.ipAddress!) port \(server.channel.localAddress!.port!)")
