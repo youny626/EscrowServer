@@ -1,10 +1,3 @@
-//
-//  logger.swift
-//  EscrowTestApp
-//
-//  Created by Zhiru Zhu on 6/24/24.
-//
-
 import Foundation
 
 func log(_ url: URL, _ message: String) {
